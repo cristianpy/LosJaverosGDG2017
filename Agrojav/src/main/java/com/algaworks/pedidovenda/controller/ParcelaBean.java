@@ -1,16 +1,10 @@
 	package com.algaworks.pedidovenda.controller;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import javax.validation.constraints.NotNull;
-
-import com.algaworks.pedidovenda.model.Categoria;
 import com.algaworks.pedidovenda.model.Parcela;
-import com.algaworks.pedidovenda.repository.Categorias;
 import com.algaworks.pedidovenda.service.ParcelaService;
 import com.algaworks.pedidovenda.util.jsf.FacesUtil;
 
@@ -21,11 +15,8 @@ public class ParcelaBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private Categorias categorias;
-
-
-	@Inject
 	private ParcelaService ParcelaService;
+	
 	private Parcela parcela;
 
 	

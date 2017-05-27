@@ -44,14 +44,14 @@
 		<intercept-url pattern="/fileup.xhtml" access="isAuthenticated()" />
 		<intercept-url pattern="/tareas/**" access="hasAnyRole('FUNCIONARIOS', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/solicitantes/**" access="hasAnyRole('FUNCIONARIOS', 'ADMINISTRADORES')" />
-				<intercept-url pattern="/relatorios/**" access="hasAnyRole('FUNCIONARIOS', 'ADMINISTRADORES')" />
+		<intercept-url pattern="/relatorios/**" access="hasAnyRole('FUNCIONARIOS', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/tareas/**" access="hasAnyRole('FUNCIONARIOS', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/vuelos/**" access="hasAnyRole('FUNCIONARIOS', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/requisitos/**" access="hasAnyRole('FUNCIONARIOS', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/funcionarios/**" access="hasAnyRole('FUNCIONARIOS', 'AUXILIARES', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/parcelas/**" access="hasAnyRole('FUNCIONARIOS', 'AUXILIARES', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/tiposCultivos/**" access="hasAnyRole('FUNCIONARIOS', 'AUXILIARES', 'ADMINISTRADORES')" />
-		<intercept-url pattern="/**" access="denyAll" />
+		<!-- <intercept-url pattern="/**" access="denyAll" /> -->
 		
 		
 		<form-login login-page="/Login.xhtml" authentication-failure-url="/Login.xhtml?invalid=true" 

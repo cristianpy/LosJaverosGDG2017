@@ -34,8 +34,8 @@ public class TipoCultivoConverter implements Converter {
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value != null) {
-			TipoCultivo funcionario = (TipoCultivo) value;
-			return funcionario.getId() == null ? null : funcionario.getId().toString();
+			TipoCultivo tipoCultivo = (TipoCultivo) value;
+			return tipoCultivo.getId() == null ? null : tipoCultivo.getId().toString();
 		}
 		
 		return "";

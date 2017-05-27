@@ -34,8 +34,8 @@ public class TipoCultivo implements Serializable {
 		return descripcion;
 	}
 
-	public void setDescripcion(String descricao) {
-		this.descripcion = descricao;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 	@Override

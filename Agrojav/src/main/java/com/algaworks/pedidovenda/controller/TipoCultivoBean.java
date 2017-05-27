@@ -24,7 +24,12 @@ public class TipoCultivoBean implements Serializable {
 	}
 
 	public void inicializar() {
-		System.out.println("Inicializando tipo cultivo bean...");
+		
+		if (FacesUtil.isNotPostback()) {
+			//categoriasRaizes = categorias.raizes();
+			
+			
+		}
 	}
 
 	private void limpar() {

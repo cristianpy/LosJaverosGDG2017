@@ -40,7 +40,7 @@ public class TiposCultivos implements Serializable {
 			manager.remove(tipoCultivo);
 			manager.flush();
 		} catch (PersistenceException e) {
-			throw new NegocioException("TipoCultivo no puede ser excluído.");
+			throw new NegocioException("Tipo Cultivo no puede ser excluído.");
 		}
 	}
 
@@ -79,7 +79,7 @@ public class TiposCultivos implements Serializable {
 	}
 	
 	public List<TipoCultivo> tipoCultivos() {
-		return this.manager.createQuery("from TipoCultivo", TipoCultivo.class)
+		return this.manager.createQuery("from tipo_cultivo", TipoCultivo.class)
 				.getResultList();
 	}
 

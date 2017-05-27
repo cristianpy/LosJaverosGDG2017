@@ -13,7 +13,7 @@ public class MessagesBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		
 		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_WARN, 
-				"Resumen del mensaje de error", "Mensagem de error completo");
+				"Resumo da mensagem de erro", "Mensagem de erro completa");
 		
 		context.addMessage("destinoErro", msg);
 	}
@@ -22,7 +22,7 @@ public class MessagesBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		
 		FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, 
-				"Resumen de aviso flotante", "Aviso flotante completo");
+				"Resumo do aviso flutuante", "Aviso flutuante completo");
 		
 		context.addMessage("destinoAviso", msg);
 	}

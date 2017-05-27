@@ -20,7 +20,7 @@ public class ParcelaService implements Serializable {
 		Parcela parcelaExistente = parcelas.porNombre(parcela.getDescripcion());
 		
 	if (parcelaExistente != null && !parcelaExistente.equals(parcela)){
-			throw new NegocioException("Ya existe unaparcela con la descripcion ingresada.");
+			throw new NegocioException("Ya existe una parcela con la descripción ingresada.");
 		}
 		
 		
