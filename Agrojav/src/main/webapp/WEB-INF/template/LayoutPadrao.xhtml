@@ -37,24 +37,21 @@
 		<h:form style="display: inline-block">
 			<p:menubar styleClass="menu-sistema">
 				<p:submenu label="Registros">
-					<p:menuitem value="Solicitantes"
+					<p:menuitem value="Parcelas"
 						outcome="/solicitantes/CadastroSolicitante" />
-					<p:menuitem value="Funcionarios"
+					<p:menuitem value="Tipos de Cultivos"
 						outcome="/funcionarios/CadastroFuncionario" />
-					<p:menuitem value="Requisitos"
+					<p:menuitem value="Insumos-Gastos"
 						outcome="/requisitos/CadastroRequisito" />
 
 					<p:separator />
 				</p:submenu>
-				<p:submenu label="Tareas">
-					<p:menuitem value="Nueva Tarea" outcome="/tareas/CadastroTarea" />
+				<p:submenu label="Operaciones">
+					<p:menuitem value="Nueva Operacion" outcome="/tareas/CadastroTarea" />
 					<p:menuitem value="Consulta" outcome="/tareas/PesquisaTareas" />
 				</p:submenu>
 
-				<p:submenu label="Vuelos de VANT">
-					<p:menuitem value="Nuevo Vuelo"   outcome="/vuelos/CadastroVuelo" />
-					<p:menuitem value="Consulta"  />
-				</p:submenu>
+		
 
 				<p:submenu label="Informes">
 					<p:menuitem value="Informe"
@@ -74,8 +71,8 @@
 
 	<p:separator style="margin-top: 20px" />
 
-	<footer> Sistemas Control de Tareas- <a
-		href="http://www.itaipu.gov.py" target="_blank">www.itaipu.gov.py</a>
+	<footer> ZafraSis- <a
+		href="http://www.datapar.com.py" target="_blank">www.datapar.com.py</a>
 	</footer>
 	<script>
 		function configurarMoeda() {
