@@ -49,6 +49,8 @@
 		<intercept-url pattern="/vuelos/**" access="hasAnyRole('FUNCIONARIOS', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/requisitos/**" access="hasAnyRole('FUNCIONARIOS', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/funcionarios/**" access="hasAnyRole('FUNCIONARIOS', 'AUXILIARES', 'ADMINISTRADORES')" />
+		<intercept-url pattern="/parcelas/**" access="hasAnyRole('FUNCIONARIOS', 'AUXILIARES', 'ADMINISTRADORES')" />
+		<intercept-url pattern="/tiposCultivos/**" access="hasAnyRole('FUNCIONARIOS', 'AUXILIARES', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/**" access="denyAll" />
 		
 		
