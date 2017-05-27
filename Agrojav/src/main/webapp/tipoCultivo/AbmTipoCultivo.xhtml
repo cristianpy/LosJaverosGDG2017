@@ -1,0 +1,52 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	 xmlns:o="http://omnifaces.org/ui">
+
+	<ui:define name="titulo">#{tipoCultivoBean.editando ? 'Editando TipoCultivo' : 'Nuevo TipoCultivo'}</ui:define>
+
+	<ui:define name="corpo">
+		<f:metadata>
+    		<o:viewParam name="tipoCultivo" value="#{tipoCultivoBean.tipoCultivo}" />
+    		<f:event listener="#{tipoCultivoBean.inicializar}" type="preRenderView" />
+    	</f:metadata>
+
+		<h:form >
+			<h1>#{tipoCultivoBean.editando ? 'Editando TipoCultivo' :
+				'Nuevo TipoCultivo'}</h1>
+
+			<p:messages autoUpdate="true" closable="true" />
+
+
+
+
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:button value="Nuevo" outcome="/tipoCultivos/AbmTipoCultivo" />
+					<p:commandButton value="Guardar" id="bGuardar"
+						action="#{tipoCultivoBean.salvar}" update="@form" />
+				</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<p:button value="Consulta"
+						outcome="/tipoCultivos/BuscadorTipoCultivos" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panelGrid columns="2" id="painel"
+				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo">
+				<p:outputLabel value="Id" for="id" />
+				<p:inputText id="id" size="20" maxlength="20"
+				value="#{tipoCultivoBean.tipoCultivo.id}" />
+
+				<p:outputLabel value="Nombre" for="nome" />
+				<p:inputText id="nome" size="60" maxlength="80"
+					value="#{tipoCultivoBean.tipoCultivo.descripcion}" />
+
+			</p:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
