@@ -1,0 +1,41 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui">
+
+	<f:metadata>
+    		<o:viewParam name="tarea" value="#{cadastroTareaBean.tarea}" />
+    		<f:event listener="#{cadastroTareaBean.inicializar}" type="preRenderView" />
+    	</f:metadata>
+    	
+    	
+
+	<ui:define name="titulo">#{cadastroTareaBean.editando ? "Editando Tarea" : "Nueva Tarea"}</ui:define>
+	<ui:define name="corpo">
+		<h:form>
+			<h1>#{cadastroTareaBean.editando ?"Editando Tarea" : "Nueva
+				Tarea"}</h1>
+			<p:messages autoUpdate="true" closable="true" />
+
+
+			<ui:include src="/WEB-INF/template/tareas/BotoesTarea.xhtml" />
+
+			<ui:include src="/WEB-INF/template/tareas/CapaTarea.xhtml" />
+
+			<p:tabView style="margin-top: 20px">
+				<p:tab title="Actividades">
+					<ui:include src="/WEB-INF/template/tareas/ItensPedido.xhtml" />
+				</p:tab>
+				<!-- <p:tab title="Observaciones de la Tarea">
+	    		<ui:include src="/WEB-INF/template/tareas/DadosEntregaPedido.xhtml" />
+	    		</p:tab> -->
+				<p:tab title="Anotaciones Varias">
+					<ui:include src="/WEB-INF/template/tareas/ObservacaoPedido.xhtml" />
+				</p:tab>
+			</p:tabView>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

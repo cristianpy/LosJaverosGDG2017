@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:p="http://primefaces.org/ui">
+
+	<p:panelGrid columns="4" style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo, rotulo, campo">
+		<p:outputLabel value="Número" />
+		<h:outputText value="#{cadastroPedidoBean.pedido.id}" />
+		
+		<p:outputLabel value="Inicio de la tarea" />
+		<h:outputText value="#{cadastroBean.pedido.dataInicio}" >
+		<f:convertDateTime pattern="dd/MM/yyyy" />
+		        </h:outputText>
+		
+		
+        
+        <p:outputLabel value="Estado"/>
+        <h:outputText value="#{cadastroPedidoBean.pedido.status}" />
+        
+        <p:outputLabel value="Funcionario" for="funcionario"/>
+        <p:selectOneMenu id="funcionario" value="#{cadastroPedidoBean.pedido.funcionario}">
+            <f:selectItem itemLabel="Seleccione" />
+        </p:selectOneMenu>
+        
+		<p:outputLabel value="Solicitante" for="solicitante"/>
+        <p:autoComplete id="solicitante" size="60" dropdown="true" 
+        	value="#{cadastroPedidoBean.pedido.solicitante}" />
+        	
+        <p:outputLabel value="Forma de pedido" for="formaPedido"/>
+        <p:selectOneMenu id="formaPedido" value="#{cadastroPedidoBean.pedido.formaPedido}">
+            <f:selectItem itemLabel="Seleccione" />
+        </p:selectOneMenu>
+        
+        
+	</p:panelGrid>
+  	
+</ui:composition>

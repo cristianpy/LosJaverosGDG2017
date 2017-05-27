@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fe25d0ab-6e7f-4fa8-aa78-b1143b75237e">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="142"/>
+	<parameter name="data_inicio" class="java.util.Date"/>
+	<parameter name="data_fim" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT
+     tarea."id" AS tarea_id,
+     tarea."data_criacao" AS tarea_data_criacao,
+     tarea."data_entrega" AS tarea_data_entrega,
+     tarea."forma_pedido" AS tarea_forma_pedido,
+     tarea."observacao" AS tarea_observacao,
+     tarea."requisito" AS tarea_requisito,
+     tarea."status" AS tarea_status,
+     tarea."funcionario_id" AS tarea_funcionario_id,
+     tarea."solicitante_id" AS tarea_solicitante_id,
+     solicitante."id" AS solicitante_id,
+     solicitante."categoria" AS solicitante_categoria,
+     solicitante."correo" AS solicitante_correo,
+     solicitante."direccion" AS solicitante_direccion,
+     solicitante."nombre" AS solicitante_nombre,
+     solicitante."obs" AS solicitante_obs,
+     solicitante."telefono" AS solicitante_telefono,
+     funcionario."id" AS funcionario_id,
+     funcionario."categoria" AS funcionario_categoria,
+     funcionario."correo" AS funcionario_correo,
+     funcionario."direccion" AS funcionario_direccion,
+     funcionario."nombre" AS funcionario_nombre,
+     funcionario."obs" AS funcionario_obs,
+     funcionario."telefono" AS funcionario_telefono
+FROM
+     "public"."solicitante" solicitante INNER JOIN "public"."tarea" tarea ON solicitante."id" = tarea."solicitante_id"
+     INNER JOIN "public"."funcionario" funcionario ON tarea."funcionario_id" = funcionario."id"]]>
+	</queryString>
+	<field name="tarea_id" class="java.lang.Long"/>
+	<field name="tarea_data_criacao" class="java.sql.Timestamp"/>
+	<field name="tarea_data_entrega" class="java.sql.Date"/>
+	<field name="tarea_forma_pedido" class="java.lang.String"/>
+	<field name="tarea_observacao" class="java.lang.String"/>
+	<field name="tarea_requisito" class="java.lang.Object"/>
+	<field name="tarea_status" class="java.lang.String"/>
+	<field name="tarea_funcionario_id" class="java.lang.Long"/>
+	<field name="tarea_solicitante_id" class="java.lang.Long"/>
+	<field name="solicitante_id" class="java.lang.Long"/>
+	<field name="solicitante_categoria" class="java.lang.Object"/>
+	<field name="solicitante_correo" class="java.lang.String"/>
+	<field name="solicitante_direccion" class="java.lang.String"/>
+	<field name="solicitante_nombre" class="java.lang.String"/>
+	<field name="solicitante_obs" class="java.lang.String"/>
+	<field name="solicitante_telefono" class="java.lang.String"/>
+	<field name="funcionario_id" class="java.lang.Long"/>
+	<field name="funcionario_categoria" class="java.lang.Object"/>
+	<field name="funcionario_correo" class="java.lang.String"/>
+	<field name="funcionario_direccion" class="java.lang.String"/>
+	<field name="funcionario_nombre" class="java.lang.String"/>
+	<field name="funcionario_obs" class="java.lang.String"/>
+	<field name="funcionario_telefono" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="22" y="2" width="100" height="20" uuid="b84c239f-f59a-4edc-a147-87205a86d123"/>
+				<text><![CDATA[tarea_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="194" y="2" width="100" height="20" uuid="1a844450-87f9-4113-aa44-2b640b6e86dd"/>
+				<text><![CDATA[tarea_data_criacao]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement x="22" y="7" width="100" height="20" uuid="7ac3b0a2-3ee3-440c-8619-8fa3eb1f53d2"/>
+				<textFieldExpression><![CDATA[$F{tarea_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="194" y="12" width="100" height="20" uuid="b2871244-eed7-48f8-8b4d-5ac0526cd1a7"/>
+				<textFieldExpression><![CDATA[$F{tarea_data_criacao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="db82d611-8cea-4b6c-9f2f-1f4a2a6b8514">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="data_inicio" class="java.util.Date">
+		<defaultValueExpression><![CDATA[pedido.`data_criacao` BETWEEN $P{data_inicio} and $P{data_fin}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="data_fin" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT
+     tarea."id" AS tarea_id,
+     tarea."data_criacao" AS tarea_data_criacao,
+     tarea."data_entrega" AS tarea_data_entrega,
+     tarea."forma_pedido" AS tarea_forma_pedido,
+     tarea."observacao" AS tarea_observacao,
+     tarea."requisito" AS tarea_requisito,
+     tarea."status" AS tarea_status,
+     tarea."funcionario_id" AS tarea_funcionario_id,
+     tarea."solicitante_id" AS tarea_solicitante_id,
+     solicitante."id" AS solicitante_id,
+     solicitante."categoria" AS solicitante_categoria,
+     solicitante."correo" AS solicitante_correo,
+     solicitante."direccion" AS solicitante_direccion,
+     solicitante."nombre" AS solicitante_nombre,
+     solicitante."obs" AS solicitante_obs,
+     solicitante."telefono" AS solicitante_telefono,
+     funcionario."id" AS funcionario_id,
+     funcionario."categoria" AS funcionario_categoria,
+     funcionario."correo" AS funcionario_correo,
+     funcionario."direccion" AS funcionario_direccion,
+     funcionario."nombre" AS funcionario_nombre,
+     funcionario."obs" AS funcionario_obs,
+     funcionario."telefono" AS funcionario_telefono,
+     item_tarea."id" AS item_tarea_id,
+     item_tarea."requisito_id" AS item_tarea_requisito_id,
+     item_tarea."tarea_id" AS item_tarea_tarea_id,
+     requisito."id" AS requisito_id,
+     requisito."nome" AS requisito_nome
+FROM
+     "public"."solicitante" solicitante INNER JOIN "public"."tarea" tarea ON solicitante."id" = tarea."solicitante_id"
+     INNER JOIN "public"."funcionario" funcionario ON tarea."funcionario_id" = funcionario."id"
+     INNER JOIN "public"."item_tarea" item_tarea ON tarea."id" = item_tarea."tarea_id"
+     INNER JOIN "public"."requisito" requisito ON item_tarea."requisito_id" = requisito."id"
+WHERE
+     tarea.`data_criacao` BETWEEN $P{data_inicio} and $P{data_fin} = ]]>
+	</queryString>
+	<field name="tarea_id" class="java.lang.Long"/>
+	<field name="tarea_data_criacao" class="java.sql.Timestamp"/>
+	<field name="tarea_data_entrega" class="java.sql.Date"/>
+	<field name="tarea_forma_pedido" class="java.lang.String"/>
+	<field name="tarea_observacao" class="java.lang.String"/>
+	<field name="tarea_requisito" class="java.lang.Object"/>
+	<field name="tarea_status" class="java.lang.String"/>
+	<field name="tarea_funcionario_id" class="java.lang.Long"/>
+	<field name="tarea_solicitante_id" class="java.lang.Long"/>
+	<field name="solicitante_id" class="java.lang.Long"/>
+	<field name="solicitante_categoria" class="java.lang.Object"/>
+	<field name="solicitante_correo" class="java.lang.String"/>
+	<field name="solicitante_direccion" class="java.lang.String"/>
+	<field name="solicitante_nombre" class="java.lang.String"/>
+	<field name="solicitante_obs" class="java.lang.String"/>
+	<field name="solicitante_telefono" class="java.lang.String"/>
+	<field name="funcionario_id" class="java.lang.Long"/>
+	<field name="funcionario_categoria" class="java.lang.Object"/>
+	<field name="funcionario_correo" class="java.lang.String"/>
+	<field name="funcionario_direccion" class="java.lang.String"/>
+	<field name="funcionario_nombre" class="java.lang.String"/>
+	<field name="funcionario_obs" class="java.lang.String"/>
+	<field name="funcionario_telefono" class="java.lang.String"/>
+	<field name="item_tarea_id" class="java.lang.Long"/>
+	<field name="item_tarea_requisito_id" class="java.lang.Long"/>
+	<field name="item_tarea_tarea_id" class="java.lang.Long"/>
+	<field name="requisito_id" class="java.lang.Long"/>
+	<field name="requisito_nome" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement x="18" y="2" width="50" height="20" uuid="7e046f56-7561-4e7d-b98d-336d9c627e91"/>
+				<text><![CDATA[tarea_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="2" width="71" height="20" uuid="cfc06204-9672-452d-9927-f70197ac2688"/>
+				<text><![CDATA[tarea_data_criacao]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="158" y="2" width="100" height="20" uuid="14ba0857-1f7a-4d22-9a2e-5e85522e4684"/>
+				<text><![CDATA[solicitante_nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="3" width="99" height="20" uuid="6eefdf7b-4107-4df2-b15b-23480f914f80"/>
+				<text><![CDATA[funcionario_nombre]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="2" width="146" height="20" uuid="931336d6-af59-457b-8d43-84c76ec5e7d0"/>
+				<text><![CDATA[tarea_observacao]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="18" y="6" width="50" height="20" uuid="e2e484d6-e197-48e4-b5c3-5765e7f0e74f"/>
+				<textFieldExpression><![CDATA[$F{tarea_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="75" y="5" width="71" height="20" uuid="77a506c4-a1f8-457c-8403-8442f189319c"/>
+				<textFieldExpression><![CDATA[$F{tarea_data_criacao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="158" y="4" width="100" height="20" uuid="246df3ac-1d95-408a-80d9-83a344e9c995"/>
+				<textFieldExpression><![CDATA[$F{solicitante_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="269" y="5" width="100" height="20" uuid="de6d81b0-ec91-459f-8a3b-29b00e2ce3eb"/>
+				<textFieldExpression><![CDATA[$F{funcionario_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="384" y="6" width="146" height="20" uuid="be090329-1c8b-4860-9526-2848f57205c1"/>
+				<textFieldExpression><![CDATA[$F{tarea_observacao}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

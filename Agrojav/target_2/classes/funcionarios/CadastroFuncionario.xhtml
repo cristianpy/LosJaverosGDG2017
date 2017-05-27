@@ -1,0 +1,89 @@
+<ui:composition template="/WEB-INF/template/LayoutPadrao.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	 xmlns:o="http://omnifaces.org/ui">
+
+	<ui:define name="titulo">#{cadastroFuncionarioBean.editando ? 'Editando Funcionario' : 'Nuevo Funcionario'}</ui:define>
+
+	<ui:define name="corpo">
+		<f:metadata>
+    		<o:viewParam name="funcionario" value="#{cadastroFuncionarioBean.funcionario}" />
+    		<f:event listener="#{cadastroFuncionarioBean.inicializar}" type="preRenderView" />
+    	</f:metadata>
+
+		<h:form >
+			<h1>#{cadastroFuncionarioBean.editando ? 'Editando Funcionario' :
+				'Nuevo Funcionario'}</h1>
+
+			<p:messages autoUpdate="true" closable="true" />
+
+
+
+
+			<p:toolbar style="margin-top: 20px">
+				<p:toolbarGroup>
+					<p:button value="Nuevo" outcome="/funcionarios/CadastroFuncionario" />
+					<p:commandButton value="Salvar" id="botaoSalvar"
+						action="#{cadastroFuncionarioBean.salvar}" update="@form" />
+				</p:toolbarGroup>
+				<p:toolbarGroup align="right">
+					<p:button value="Consulta"
+						outcome="/funcionarios/PesquisaFuncionarios" />
+				</p:toolbarGroup>
+			</p:toolbar>
+
+			<p:panelGrid columns="2" id="painel"
+				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo">
+				<p:outputLabel value="Id" for="id" />
+				<p:inputText id="id" size="20" maxlength="20"
+				value="#{cadastroFuncionarioBean.funcionario.id}" />
+
+				<p:outputLabel value="Nombre" for="nome" />
+				<p:inputText id="nome" size="60" maxlength="80"
+					value="#{cadastroFuncionarioBean.funcionario.nombre}" />
+
+				<p:outputLabel value="Categoria" for="categoria" />
+				<p:selectOneMenu id="categoria"
+					value="#{cadastroFuncionarioBean.categoriaPai}">
+					<f:selectItem itemLabel="Selecione a categoria" />
+					<f:selectItems value="#{cadastroFuncionarioBean.categoriasRaizes}"
+						var="categoria" itemValue="#{categoria}"
+						itemLabel="#{categoria.descricao}" />
+					<p:ajax listener="#{cadastroFuncionarioBean.carregarSubcategorias}"
+						update="subcategoria" />
+				</p:selectOneMenu>
+
+				<p:outputLabel value="Subcategoria" for="subcategoria" />
+				<p:selectOneMenu id="subcategoria"
+					value="#{cadastroFuncionarioBean.funcionario.categoria}">
+					<f:selectItem itemLabel="Selecione a subcategoria" />
+					<f:selectItems value="#{cadastroFuncionarioBean.subcategorias}"
+						var="subcategoria" itemValue="#{subcategoria}"
+						itemLabel="#{subcategoria.descricao}" />
+				</p:selectOneMenu>
+
+
+
+				<p:outputLabel value="Direcion" for="direccion" />
+				<p:inputText id="direccion" size="80" maxlength="80"
+					value="#{cadastroFuncionarioBean.funcionario.direccion}" />
+
+				<p:outputLabel value="Telefono" for="telefono" />
+				<p:inputText id="telefono" size="20" maxlength="20"
+					value="#{cadastroFuncionarioBean.funcionario.telefono}" />
+
+				<p:outputLabel value="Correo" for="correo" />
+				<p:inputText id="correo" size="80" maxlength="80"
+					value="#{cadastroFuncionarioBean.funcionario.correo}" />
+				<p:outputLabel value="Observaciones" for="obs" />
+				<p:inputText id="obs" size="10" maxlength="5"
+					value="#{cadastroFuncionarioBean.funcionario.obs}" />
+
+			</p:panelGrid>
+		</h:form>
+
+	</ui:define>
+</ui:composition>
