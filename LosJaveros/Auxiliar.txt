@@ -1,0 +1,13 @@
+<h2>Personalizado</h2>
+		<p>Info adicional.</p>
+		<p:menu styleClass="ui-listview-inset ui-corner-all ui-group-theme-b">
+		    <p:submenu label="Registros">
+		        <p:menuitem value="Parcelas" url="/parcelas/CadastroParcela.xhtml" icon="ui-icon-gear"/>
+		        <p:menuitem value="Cultivos" url="/cultivos/CadastroCultivo.xhtml" icon="ui-icon-delete"/>
+		        <p:menuitem value="Insumos" url="/insumos/CadastroInsumo.xhtml" icon="ui-icon-delete"/>
+		    </p:submenu>
+		    <p:submenu label="Movimientos">
+		        <p:menuitem value="Movimiento" url="/tareas/CadastroTarea" icon="ui-icon-info"/>
+		        <p:menuitem value="Consultar" url="/tareas/PesquisaTareas" icon="ui-icon-action"/>
+		    </p:submenu>
+		</p:menu>

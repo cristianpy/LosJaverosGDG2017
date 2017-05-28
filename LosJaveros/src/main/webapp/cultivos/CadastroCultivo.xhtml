@@ -39,10 +39,11 @@ outcome="/cultivos/PesquisaCultivos" />
 
 			<p:panelGrid columns="2" id="painel"
 				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo">
+
 				<p:outputLabel value="Id" for="id" />
 				<p:inputText id="id" size="20" maxlength="20"
 				value="#{cadastroCultivoBean.cultivo.id}" />
-
+				
 				<p:outputLabel value="Descripción" for="nome" />
 				<p:inputText id="nome" size="60" maxlength="80"
 					value="#{cadastroCultivoBean.cultivo.nome}" />
