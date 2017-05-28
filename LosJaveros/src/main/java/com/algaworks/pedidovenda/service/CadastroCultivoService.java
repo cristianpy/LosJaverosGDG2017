@@ -13,18 +13,18 @@ public class CadastroCultivoService implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
-	private Cultivos insumos;
+	private Cultivos cultivos;
 	
 	@Transactional
-	public Cultivo salvar(Cultivo insumo) {
-		Cultivo insumoExistente = insumos.porunNome(insumo.getNome());
+	public Cultivo salvar(Cultivo cultivo) {
+		Cultivo cultivoExistente = cultivos.porunNome(cultivo.getNome());
 		
-	if (insumoExistente != null && !insumoExistente.equals(insumo)){
-			throw new NegocioException("Ya existe um insumo con descripcion informado.");
+	if (cultivoExistente != null && !cultivoExistente.equals(cultivo)){
+			throw new NegocioException("Ya existe um cultivo con descripcion informado.");
 		}
 		
 		
-		return insumos.guardar(insumo);
+		return cultivos.guardar(cultivo);
 	}
 
 	

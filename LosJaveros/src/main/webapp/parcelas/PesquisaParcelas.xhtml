@@ -5,21 +5,21 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">#{cadastroFuncionarioBean.editando ? 'Editar  funcionarios' : 'Nuevo funcionario'}</ui:define>
+	<ui:define name="titulo">#{cadastroParcelaBean.editando ? 'Editar  parcelas' : 'Nuevo parcela'}</ui:define>
 
 	<ui:define name="corpo">
 	<h:form id="frmPesquisa">
-			<h1>Consulta de funcionarios</h1>
+			<h1>Consulta de parcelas</h1>
 
 			<p:messages autoUpdate="true" closable="true" />
 
 			<p:toolbar style="margin-top: 20px">
 				<p:toolbarGroup>
 					<p:commandButton value="Consultar"
-						action="#{pesquisaFuncionariosBean.pesquisar}" update="@form" />
+						action="#{pesquisaParcelasBean.pesquisar}" update="@form" />
 				</p:toolbarGroup>
 				<p:toolbarGroup align="right">
-					<p:button value="Nuevo" outcome="/funcionarios/CadastroFuncionario" />
+					<p:button value="Nuevo" outcome="/parcelas/CadastroParcela" />
 				</p:toolbarGroup>
 			</p:toolbar>
 
@@ -27,74 +27,60 @@
 				style="width: 100%; margin-top: 20px" columnClasses="rotulo, campo">
 				<p:outputLabel value="ID" for="id" />
 				<p:inputText id="id" size="20"
-					value="#{pesquisaFuncionariosBean.filtro.id}" />
+					value="#{pesquisaParcelasBean.filtro.id}" />
 
-				<p:outputLabel value="Nombre" for="nombre" />
-				<p:inputText id="nombre" size="60"
-					value="#{pesquisaFuncionariosBean.filtro.nombre}" />
+				<p:outputLabel value="Descripción" for="nome" />
+				<p:inputText id="nome" size="60"
+					value="#{pesquisaParcelasBean.filtro.nome}" />
 			</p:panelGrid>
 
-			<p:dataTable id="funcionariosTable"
-				value="#{pesquisaFuncionariosBean.funcionariosFiltrados}"
-				var="funcionario" style="margin-top: 20px"
-				emptyMessage="No hay funcionarios encontradosssss." rows="20"
+			<p:dataTable id="parcelasTable"
+				value="#{pesquisaParcelasBean.parcelasFiltrados}"
+				var="parcela" style="margin-top: 20px"
+				emptyMessage="No hay parcelas encontradas." rows="20"
 				paginator="true" paginatorAlwaysVisible="false"
 				paginatorPosition="bottom">
 				<p:column headerText="ID" style="text-align: center; width: 100px">
-					<h:outputText value="#{funcionario.id}" />
+					<h:outputText value="#{parcela.id}" />
 				</p:column>
-				<p:column headerText="Nombre">
-					<h:outputText value="#{funcionario.nombre}" />
-				</p:column>
-				<p:column headerText="Categoria" style="width: 250px">
-					<h:outputText
-						value="#{funcionario.categoria.categoriaPai.descricao} - #{funcionario.categoria.descricao}" />
+				<p:column headerText="Descripcion">
+					<h:outputText value="#{parcela.nome}" />
 				</p:column>
 
-				<p:column headerText="Direccion"
+				<p:column headerText="Ciudad"
 					style="text-align: right; width: 120px">
-					<h:outputText value="#{funcionario.direccion}">
+					<h:outputText value="#{parcela.cidade}">
 					</h:outputText>
 				</p:column>
 
-				<p:column headerText="Telefono"
+				<p:column headerText="Url"
 					style="text-align: center; width: 100px">
-					<h:outputText value="#{funcionario.telefono}" />
-				</p:column>
-
-				<p:column headerText="Correo"
-					style="text-align: center; width: 100px">
-					<h:outputText value="#{funcionario.correo}" />
-				</p:column>
-
-				<p:column headerText="Observaciones"
-					style="text-align: center; width: 100px">
-					<h:outputText value="#{funcionario.obs}" />
+					<h:outputText value="#{parcela.url}" />
 				</p:column>
 
 
 				<p:column style="width: 100px; text-align: center">
 					
-					<p:button outcome="/funcionarios/CadastroFuncionario" icon="ui-icon-pencil"
+					<p:button outcome="/parcelas/CadastroParcela" icon="ui-icon-pencil"
 						title="a Editar">
-						<f:param name="funcionario" value="#{funcionario.id}" />
+						<f:param name="parcela" value="#{parcela.id}" />
 					</p:button>
 					
 					<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="confirmacaoExclusao.show()"
 	    					process="@this" update=":frmPesquisa:confirmacaoExclusaoDialog">
-	    				<f:setPropertyActionListener target="#{pesquisaFuncionariosBean.funcionarioSelecionado}" 
-	    					value="#{funcionario}" />
+	    				<f:setPropertyActionListener target="#{pesquisaParcelasBean.parcelaSelecionado}" 
+	    					value="#{parcela}" />
 	    			</p:commandButton>
 	    		</p:column>
 	    	</p:dataTable>
 	    	
 	    	<p:confirmDialog header="Excluir" 
-	    		message="Seguro desea excluir  #{pesquisaFuncionariosBean.funcionarioSelecionado.id} - #{pesquisaFuncionariosBean.funcionarioSelecionado.nombre}?"
+	    		message="Seguro desea excluir  #{pesquisaParcelasBean.parcelaSelecionado.id} - #{pesquisaParcelasBean.parcelaSelecionado.nome}?"
 	    		widgetVar="confirmacaoExclusao"	id="confirmacaoExclusaoDialog">
 	    		<p:button value="No" onclick="confirmacaoExclusao.hide(); return false;" />
 	    		<p:commandButton value="Si" oncomplete="confirmacaoExclusao.hide();"
-	    			action="#{pesquisaFuncionariosBean.excluir}" process="@this"
-	    			update=":frmPesquisa:funcionariosTable" />
+	    			action="#{pesquisaParcelasBean.excluir}" process="@this"
+	    			update=":frmPesquisa:parcelasTable" />
 	    	</p:confirmDialog>
     	</h:form>
     </ui:define>

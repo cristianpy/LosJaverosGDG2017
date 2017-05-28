@@ -5,6 +5,7 @@ body {
 	font-family: Arial, Helvetica, sans-serif;
 	margin: 0px;
 	font-weight: normal;
+	background="aguaintegracionbanner.png"
 }
 
 header {
@@ -107,7 +108,7 @@ h1 {
 }
 
 .menu-sistema .ui-menu-parent > a .ui-menuitem-text, .menu-sistema > .ui-menu-list > .ui-menuitem > a > .ui-menuitem-text {
-    color: #ffffff !important;
+    color: #00ff00!important;
 }
 
 .menu-sistema .ui-icon-triangle-1-s {

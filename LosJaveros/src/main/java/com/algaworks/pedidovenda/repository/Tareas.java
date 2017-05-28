@@ -33,9 +33,9 @@ public class Tareas implements Serializable {
 		
 		Criteria criteria = session.createCriteria(Tarea.class)
 				// fazemos uma associação (join) com cliente e nomeamos como "c"
-				.createAlias("solicitante", "s")
+				.createAlias("parcela", "s")
 				// fazemos uma associação (join) com vendedor e nomeamos como "v"
-				.createAlias("funcionario", "f");
+				.createAlias("cultivo", "f");
 		
 		if (filtro.getNumeroDe() != null) {
 			// id deve ser maior ou igual (ge = greater or equals) a filtro.numeroDe
@@ -55,14 +55,14 @@ public class Tareas implements Serializable {
 			criteria.add(Restrictions.le("dataCriacao", filtro.getDataCriacaoAte()));
 		}
 		
-		if (StringUtils.isNotBlank(filtro.getNomeSolicitante())) {
+		if (StringUtils.isNotBlank(filtro.getNomeParcela())) {
 			// acessamos o nome do cliente associado ao pedido pelo alias "c", criado anteriormente
-			criteria.add(Restrictions.ilike("s.nombre", filtro.getNomeSolicitante(), MatchMode.ANYWHERE));
+			criteria.add(Restrictions.ilike("s.nombre", filtro.getNomeParcela(), MatchMode.ANYWHERE));
 		}
 		
-		if (StringUtils.isNotBlank(filtro.getNomeFuncionario())) {
+		if (StringUtils.isNotBlank(filtro.getNomeCultivo())) {
 			// acessamos o nome do vendedor associado ao pedido pelo alias "v", criado anteriormente
-			criteria.add(Restrictions.ilike("f.nombre", filtro.getNomeFuncionario(), MatchMode.ANYWHERE));
+			criteria.add(Restrictions.ilike("f.nombre", filtro.getNomeCultivo(), MatchMode.ANYWHERE));
 		}
 		
 		if (filtro.getStatuses() != null && filtro.getStatuses().length > 0) {

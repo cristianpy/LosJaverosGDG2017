@@ -12,11 +12,11 @@
     	
     	
 
-	<ui:define name="titulo">#{cadastroTareaBean.editando ? "Editando Tarea" : "Nueva Tarea"}</ui:define>
+	<ui:define name="titulo">#{cadastroTareaBean.editando ? "Editando Movimiento" : "Nuevo Movimiento"}</ui:define>
 	<ui:define name="corpo">
 		<h:form>
-			<h1>#{cadastroTareaBean.editando ?"Editando Tarea" : "Nueva
-				Tarea"}</h1>
+			<h1>#{cadastroTareaBean.editando ?"Editando Movimiento" : "Nuevo
+				Movimiento"}</h1>
 			<p:messages autoUpdate="true" closable="true" />
 
 
@@ -25,7 +25,7 @@
 			<ui:include src="/WEB-INF/template/tareas/CapaTarea.xhtml" />
 
 			<p:tabView style="margin-top: 20px">
-				<p:tab title="Actividades">
+				<p:tab title="Insumos utilizados">
 					<ui:include src="/WEB-INF/template/tareas/ItensPedido.xhtml" />
 				</p:tab>
 				<!-- <p:tab title="Observaciones de la Tarea">

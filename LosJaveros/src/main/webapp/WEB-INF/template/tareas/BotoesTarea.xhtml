@@ -6,20 +6,20 @@
 
 	<p:toolbar style="margin-top: 20px">
   		<p:toolbarGroup>
-  			<p:button value="Nueva Tarea" outcome="/tareas/CadastroTarea"/>
-  			<p:commandButton value="Guardar Tarea" action="#{cadastroTareaBean.salvar}"
+  			<p:button value="Nuevo Movimiento" outcome="/tareas/CadastroTarea"/>
+  			<p:commandButton value="Guardar Movimiento" action="#{cadastroTareaBean.salvar}"
   				update="@form" 
   				disabled="#{cadastroTareaBean.tarea.naoAlteravel}" />
   		</p:toolbarGroup>
   		
   		<p:toolbarGroup align="right">
-  			<p:commandButton value="Finalizar Tarea" action="#{finalizarTareaBean.emitirTarea}" 
+  			<p:commandButton value="Finalizar Movimiento" action="#{finalizarTareaBean.emitirTarea}" 
   				process="@form" update="@form"
   				disabled="#{cadastroTareaBean.tarea.naoEmissivel}" />
   			<p:commandButton value="Cancelar Tarea" action="#{cancelamentoTareaBean.cancelarTarea}"
   				process="@this" update="@form" 
   				disabled="#{cadastroTareaBean.tarea.naoCancelavel}" />
-  				  			<p:commandButton value="Enviar Resumen de Tarea por e-mail" />
+  				  			<p:commandButton value="Resumen de Movimiento por e-mail" />
   			
   			<p:separator/>
   		

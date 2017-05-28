@@ -21,7 +21,7 @@ public class ItemTarea implements Serializable {
 	private Long id;
 	
 	
-	private Requisito requisito;
+	private Insumo insumos;
 	
 	private Tarea tarea;
 
@@ -50,13 +50,13 @@ public class ItemTarea implements Serializable {
 	}
 
 	@ManyToOne
-	@JoinColumn(name = "requisito_id", nullable = false)
-	public Requisito getRequisito() {
-		return requisito;
+	@JoinColumn(name = "insumos_id", nullable = false)
+	public Insumo getInsumo() {
+		return insumos;
 	}
 
-	public void setRequisito(Requisito requisito) {
-		this.requisito = requisito;
+	public void setInsumo(Insumo insumos) {
+		this.insumos = insumos;
 	}
 	
 	
@@ -90,8 +90,8 @@ public class ItemTarea implements Serializable {
 	}
 	
 	@Transient
-	public boolean isRequisitoAssociado() {
-		return this.getRequisito() != null && this.getRequisito().getId() != null;
+	public boolean isInsumoAssociado() {
+		return this.getInsumo() != null && this.getInsumo().getId() != null;
 	}
 
 }

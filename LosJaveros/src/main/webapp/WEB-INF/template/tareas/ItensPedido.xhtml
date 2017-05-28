@@ -6,31 +6,31 @@
 
 	<p:dataTable value="#{cadastroTareaBean.tarea.itens}" var="item"  rowIndexVar="linha"  id="tabelaItens">
 		<p:column headerText="ID" style="text-align: center; width: 100px">
-			<h:outputText value="#{item.requisito.id}" rendered="#{item.requisitoAssociado}"/>
+			<h:outputText value="#{item.insumo.id}" rendered="#{item.insumoAssociado}"/>
 			
-			 <p:inputText size="8" value="#{item.requisito.id}" label="id"
-				rendered="#{not item.requisitoAssociado}">
+			 <p:inputText size="8" value="#{item.insumo.id}" label="id"
+				rendered="#{not item.insumoAssociado}">
 				<p:ajax event="change" process="@this" 
 					update="tabelaItens" 
-					listener="#{cadastroTareaBean.carregarRequisitoPorId}" />
+					listener="#{cadastroTareaBean.carregarInsumoPorId}" />
 			</p:inputText>
 		</p:column>
-		<p:column headerText="Requisito">
-			<h:outputText value="#{item.requisito.nome}"  rendered ="#{item.requisitoAssociado}" />
+		<p:column headerText="Insumo">
+			<h:outputText value="#{item.insumo.nome}"  rendered ="#{item.insumoAssociado}" />
 		
-			<p:autoComplete styleClass="produto-tabela" value="#{cadastroTareaBean.requisitoLinhaEditavel}"
-				completeMethod="#{cadastroTareaBean.completarRequisito}"
-				var="requisito" itemLabel="#{requisito.nome}" itemValue="#{requisito}" 
-				forceSelection="true" rendered ="#{not item.requisitoAssociado}"
+			<p:autoComplete styleClass="produto-tabela" value="#{cadastroTareaBean.insumoLinhaEditavel}"
+				completeMethod="#{cadastroTareaBean.completarInsumo}"
+				var="insumo" itemLabel="#{insumo.nome}" itemValue="#{insumo}" 
+				forceSelection="true" rendered ="#{not item.insumoAssociado}"
 				disabled="#{cadastroTareaBean.tarea.naoAlteravel}" >
 				<p:ajax event="itemSelect" update="tabelaItens " 
-					listener="#{cadastroTareaBean.carregarRequisitoLinhaEditavel}"/>
+					listener="#{cadastroTareaBean.carregarInsumoLinhaEditavel}"/>
 			</p:autoComplete>
 		</p:column>
 		
 		<p:column headerText="Eliminar" style="text-align: center; width: 50px">
 					<p:commandButton icon="ui-icon-closethick" action="#{cadastroTareaBean.removerItem(item, linha)}" process="@this"
-					update="tabelaItens "  rendered ="#{item.requisitoAssociado}"  disabled="#{cadastroTareaBean.tarea.naoAlteravel}" />
+					update="tabelaItens "  rendered ="#{item.insumoAssociado}"  disabled="#{cadastroTareaBean.tarea.naoAlteravel}" />
 				</p:column>
 		
 		

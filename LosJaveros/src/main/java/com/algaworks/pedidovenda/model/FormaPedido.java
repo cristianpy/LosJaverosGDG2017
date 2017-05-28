@@ -4,9 +4,8 @@ public enum FormaPedido {
 
 	
 	
-	LOTUS("Lotus"), 
-	VERBAL("Verbal"), 
-	NOTA("Nota");
+	NORMAL("Normal"), 
+	ZABRINHA("Zafriña");
 	
 	
 	

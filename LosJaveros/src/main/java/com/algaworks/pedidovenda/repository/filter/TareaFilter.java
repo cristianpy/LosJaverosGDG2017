@@ -13,8 +13,8 @@ public class TareaFilter implements Serializable {
 	private Long numeroAte;
 	private Date dataCriacaoDe;
 	private Date dataCriacaoAte;
-	private String nomeSolicitante;
-	private String nomeFuncionario;
+	private String nomeParcela;
+	private String nomeCultivo;
 	private StatusTarea[] statuses;
 
 	public Long getNumeroDe() {
@@ -49,20 +49,20 @@ public class TareaFilter implements Serializable {
 		this.dataCriacaoAte = dataCriacaoAte;
 	}
 
-	public String getNomeSolicitante() {
-		return nomeSolicitante;
+	public String getNomeParcela() {
+		return nomeParcela;
 	}
 
-	public void setNomeSolicitante(String nomeSolicitante) {
-		this.nomeSolicitante = nomeSolicitante;
+	public void setNomeParcela(String nomeParcela) {
+		this.nomeParcela = nomeParcela;
 	}
 
-	public String getNomeFuncionario() {
-		return nomeFuncionario;
+	public String getNomeCultivo() {
+		return nomeCultivo;
 	}
 
-	public void setNomeFuncionario(String nomeFuncionario) {
-		this.nomeFuncionario = nomeFuncionario;
+	public void setNomeCultivo(String nomeCultivo) {
+		this.nomeCultivo = nomeCultivo;
 	}
 
 	public StatusTarea[] getStatuses() {

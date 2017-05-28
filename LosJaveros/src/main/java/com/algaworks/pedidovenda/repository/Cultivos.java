@@ -16,6 +16,7 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import com.algaworks.pedidovenda.model.Cultivo;
+import com.algaworks.pedidovenda.model.Funcionario;
 import com.algaworks.pedidovenda.repository.filter.CultivoFilter;
 import com.algaworks.pedidovenda.service.NegocioException;
 import com.algaworks.pedidovenda.util.jpa.Transactional;
@@ -30,18 +31,20 @@ public class Cultivos implements Serializable {
 	public Cultivo guardar(Cultivo insumo) {
 		return manager.merge(insumo);
 	}
+
 	
 	@Transactional
-	public void remover(Cultivo insumo) {
+	public void remover(Cultivo cultivo) {
 		try {
-			insumo = porId(insumo.getId());
-			manager.remove(insumo);
+			cultivo = porId(cultivo.getId());
+			manager.remove(cultivo);
 			manager.flush();
 		} catch (PersistenceException e) {
 			throw new NegocioException("Cultivo no puede ser excluído.");
 		}
 	}
 
+	
 	public Cultivo porSku(String sku) {
 		try {
 			return manager.createQuery("from Cultivo where upper(sku) = :sku", Cultivo.class)
@@ -73,6 +76,26 @@ public class Cultivos implements Serializable {
 	public List<Cultivo> porNome(String nome) {
 		return this.manager.createQuery("from Cultivo where upper(nome) like :nome", Cultivo.class)
 				.setParameter("nome", nome.toUpperCase() + "%").getResultList();
+	}
+	
+	//
+	public List<Funcionario> porNomeLista1(String nombre) {
+
+		return this.manager.createQuery("from Funcionario " +
+				"where upper(nombre) like :nombre", Funcionario.class)
+				.setParameter("nombre", nombre.toUpperCase() + "%")
+				.getResultList();
+		
+	}
+	//
+	
+	public List<Cultivo> porNomeLista(String nome) {
+
+		return this.manager.createQuery("from Cultivo " +
+				"where upper(nome) like :nome", Cultivo.class)
+				.setParameter("nome", nome.toUpperCase() + "%")
+				.getResultList();
+		
 	}
 	
 	public Cultivo porunNome(String nome) {

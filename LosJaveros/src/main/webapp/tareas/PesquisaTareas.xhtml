@@ -5,11 +5,11 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
 
-	<ui:define name="titulo">Consulta de tareas</ui:define>
+	<ui:define name="titulo">Consulta de Movimiento</ui:define>
 
 	<ui:define name="corpo">
 		<h:form>
-			<h1>Consuta de tareas</h1>
+			<h1>Consuta de Movimiento</h1>
 
 			<p:toolbar style="margin-top: 20px">
 				<p:toolbarGroup>
@@ -23,7 +23,7 @@
 						<p:dataExporter type="xls" target="tareasTable"
 							fileName="tareas" postProcessor="#{pesquisaTareasBean.posProcessarXls}" />
 					</p:commandButton>
-					<p:button value="Nueva Tarea" outcome="/tareas/CadastroTarea" />
+					<p:button value="Nuevo Movimiento" outcome="/tareas/CadastroTarea" />
 				</p:toolbarGroup>
 			</p:toolbar>
 
@@ -45,14 +45,14 @@
 	    			value="#{pesquisaTareasBean.filtro.dataCriacaoAte}" />
 				</h:panelGroup>
 
-				<p:outputLabel value="Funcionario" />
+				<p:outputLabel value="Cultivo" />
 				<p:inputText size="40" 
-				value="#{pesquisaTareasBean.filtro.nomeFuncionario}" />
+				value="#{pesquisaTareasBean.filtro.nomeCultivo}" />
 				
 
-				<p:outputLabel value="Solicitante" />
+				<p:outputLabel value="Parcela" />
 				<p:inputText size="40" 
-				value="#{pesquisaTareasBean.filtro.nomeSolicitante}" />
+				value="#{pesquisaTareasBean.filtro.nomeParcela}" />
 
 				<p:outputLabel value="Status" />
 				<p:selectManyCheckbox value="#{pesquisaTareasBean.filtro.statuses}">
@@ -63,18 +63,18 @@
 
 			<p:dataTable id="tareasTable"
 				value="#{pesquisaTareasBean.tareasFiltrados}" var="tarea"
-				style="margin-top: 20px" emptyMessage="Sin tareas encontradas."
+				style="margin-top: 20px" emptyMessage="Sin movimientos encontradas."
 				rows="20" paginator="true" paginatorAlwaysVisible="false"
 				paginatorPosition="bottom">
 				<p:column headerText="Id"
 					style="text-align: center; width: 100px">
 					<h:outputText value="#{tarea.id}"/>
 				</p:column>
-				<p:column headerText="Solicitante">
-					<h:outputText value="#{tarea.solicitante.nombre}"/>
+				<p:column headerText="Parcela">
+					<h:outputText value="#{tarea.parcela.nome}"/>
 				</p:column>
-				<p:column headerText="Funcionario">
-					<h:outputText value="#{tarea.funcionario.nombre}"/>
+				<p:column headerText="Cultivo">
+					<h:outputText value="#{tarea.cultivo.nome}"/>
 				</p:column>
 				<p:column headerText="Fecha Inicio"
 					style="text-align: center; width: 140px">

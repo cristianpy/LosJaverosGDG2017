@@ -18,32 +18,33 @@
         
         
         
-        <p:outputLabel value="Funcionario" for="funcionario"/>
-        <p:autoComplete id="funcionario" size="50" dropdown="true" 
-        
-        	value="#{cadastroTareaBean.tarea.funcionario}" 
-        	
-        	completeMethod="#{cadastroTareaBean.completarFuncionario}"
-        	var="funcionario" itemLabel="#{funcionario.nombre}" itemValue="#{funcionario}" forceSelection="true"
+        <p:outputLabel value="Cultivo" for="cultivo"/>
+        <p:autoComplete id="cultivo" size="30" dropdown="true" 
+                	value="#{cadastroTareaBean.tarea.cultivo}" 
+                	completeMethod="#{cadastroTareaBean.completarCultivo}"
+        	var="cultivo" itemLabel="#{cultivo.nome}" itemValue="#{cultivo}" forceSelection="true"
         	disabled="#{cadastroTareaBean.tarea.naoAlteravel}" />
         
-		 <p:outputLabel value="Solicitante" for="solicitante"/>
-	<h:panelGroup>
-        <p:autoComplete id="solicitante" size="50" dropdown="true" 
         
-        	value="#{cadastroTareaBean.tarea.solicitante}" 
+        
+        
+		 <p:outputLabel value="Parcela" for="parcela"/>
+	<h:panelGroup>
+        <p:autoComplete id="parcela" size="30" dropdown="true" 
+        
+        	value="#{cadastroTareaBean.tarea.parcela}" 
         	
-        	completeMethod="#{cadastroTareaBean.completarSolicitante}"
-        	var="solicitante" itemLabel="#{solicitante.nombre}" itemValue="#{solicitante}" forceSelection="true"
+        	completeMethod="#{cadastroTareaBean.completarParcela}"
+        	var="parcela" itemLabel="#{parcela.nome}" itemValue="#{parcela}" forceSelection="true"
         	disabled="#{cadastroTareaBean.tarea.naoAlteravel}" />
         	
         	<p:commandButton icon="ui-icon-search" title="Buscar" process="@this"
 	        	update="@none" disabled="#{cadastroTareaBean.tarea.naoAlteravel}"
-	        	action="#{selecSolicitanteBean.abrirDialogo}"
+	        	action="#{selecParcelaBean.abrirDialogo}"
 	        	ignoreAutoUpdate="true" />
         </h:panelGroup>
         	
-       <p:outputLabel value="Forma de pedido" for="formaPedido"/>
+       <p:outputLabel value="Temporada" for="formaPedido"/>
         <p:selectOneMenu id="formaPedido" value="#{cadastroTareaBean.tarea.formaPedido}"
         disabled="#{cadastroTareaBean.tarea.naoAlteravel}" >
             <f:selectItem itemLabel="Seleccione" />

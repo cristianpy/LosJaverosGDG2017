@@ -36,11 +36,11 @@ public class Tarea implements Serializable {
 	
 	private StatusTarea status= StatusTarea.EN_CURSO;
 	private FormaPedido formaPedido;
-	private Requisito requisito;
+	private Insumo insumo;
 
 	
-	private Funcionario funcionario;
-	private Solicitante solicitante;
+	private Cultivo cultivo;
+	private Parcela parcela;
 	private List<ItemTarea> itens = new ArrayList<>();
 
 	@Id
@@ -110,24 +110,24 @@ public class Tarea implements Serializable {
 	
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "funcionario_id", nullable = false)
-	public Funcionario getFuncionario() {
-		return funcionario;
+	@JoinColumn(name = "cultivo_id", nullable = false)
+	public Cultivo getCultivo() {
+		return cultivo;
 	}
 
-	public void setFuncionario(Funcionario funcionario) {
-		this.funcionario = funcionario;
+	public void setCultivo(Cultivo cultivo) {
+		this.cultivo = cultivo;
 	}
 
 	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "solicitante_id", nullable = false)
-	public Solicitante getSolicitante() {
-		return solicitante;
+	@JoinColumn(name = "parcela_id", nullable = false)
+	public Parcela getParcela() {
+		return parcela;
 	}
 
-	public void setSolicitante(Solicitante solicitante) {
-		this.solicitante = solicitante;
+	public void setParcela(Parcela parcela) {
+		this.parcela = parcela;
 	}
 
 	
@@ -155,12 +155,12 @@ public class Tarea implements Serializable {
 	
 	
 
-	public Requisito getRequisito() {
-		return requisito;
+	public Insumo getInsumo() {
+		return insumo;
 	}
 
-	public void setRequisito(Requisito requisito) {
-		this.requisito = requisito;
+	public void setInsumo(Insumo insumo) {
+		this.insumo = insumo;
 	}
 
 	@Override
@@ -199,7 +199,7 @@ public class Tarea implements Serializable {
 
 		ItemTarea primeiroItem = this.getItens().get(0);
 		
-		if (primeiroItem != null ) {//&& primeiroItem.getRequisito().getId() == null
+		if (primeiroItem != null ) {//&& primeiroItem.getInsumo().getId() == null
 			System.out.println("xxxx item remove...");
 			this.getItens().remove(0);
 		}
@@ -208,10 +208,10 @@ public class Tarea implements Serializable {
 	}
 	public void adicionarItemVazio() {
 		if (this.isEnCurso()) {
-			Requisito requisito = new Requisito();
+			Insumo insumo = new Insumo();
 			
 			ItemTarea item = new ItemTarea();
-			item.setRequisito(requisito);
+			item.setInsumo(insumo);
 			item.setTarea(this);			
 			this.getItens().add(0, item);
 		}

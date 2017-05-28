@@ -5,27 +5,27 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
-import com.algaworks.pedidovenda.model.Cultivo;
-import com.algaworks.pedidovenda.repository.Cultivos;
+import com.algaworks.pedidovenda.model.Parcela;
+import com.algaworks.pedidovenda.repository.Parcelas;
 import com.algaworks.pedidovenda.util.cdi.CDIServiceLocator;
 
-@FacesConverter(forClass = Cultivo.class)
-public class CultivoConverter implements Converter {
+@FacesConverter(forClass = Parcela.class)
+public class ParcelaConverter implements Converter {
 
 	//@Inject
-	private Cultivos cultivos;
+	private Parcelas parcelas;
 	
-	public CultivoConverter() {
-		cultivos = CDIServiceLocator.getBean(Cultivos.class);
+	public ParcelaConverter() {
+		parcelas = CDIServiceLocator.getBean(Parcelas.class);
 	}
 	
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		Cultivo retorno = null;
+		Parcela retorno = null;
 		
 		if (value != null) {
 			Long id = new Long(value);
-			retorno = cultivos.porId(id);
+			retorno = parcelas.porId(id);
 		}
 		
 		return retorno;
@@ -34,8 +34,8 @@ public class CultivoConverter implements Converter {
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value != null) {
-			Cultivo cultivo = (Cultivo) value;
-			return cultivo.getId() == null ? null : cultivo.getId().toString();
+			Parcela insumo = (Parcela) value;
+			return insumo.getId() == null ? null : insumo.getId().toString();
 		}
 		
 		return "";

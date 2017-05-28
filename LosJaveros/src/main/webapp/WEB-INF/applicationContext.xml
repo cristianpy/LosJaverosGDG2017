@@ -52,7 +52,6 @@
 						<intercept-url pattern="/insumos/**" access="hasAnyRole('FUNCIONARIOS', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/parcelas/**" access="hasAnyRole('FUNCIONARIOS', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/funcionarios/**" access="hasAnyRole('FUNCIONARIOS', 'AUXILIARES', 'ADMINISTRADORES')" />
-		<intercept-url pattern="/cultivos/**" access="hasAnyRole('FUNCIONARIOS', 'AUXILIARES', 'ADMINISTRADORES')" />
 		<intercept-url pattern="/**" access="denyAll" />
 		
 		

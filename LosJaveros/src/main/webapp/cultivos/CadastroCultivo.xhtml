@@ -25,13 +25,15 @@
 
 			<p:toolbar style="margin-top: 20px">
 				<p:toolbarGroup>
-					<p:button value="Nuevo" outcome="/cultivos/CadastroCultivo" />
+<!-- 				 outcome="/cultivos/CadastroCultivo"
+outcome="/cultivos/PesquisaCultivos" />
+ -->					<p:button value="Nuevo"  outcome="/cultivos/CadastroCultivo"/>
 					<p:commandButton value="Salvar" id="botaoSalvar"
 						action="#{cadastroCultivoBean.salvar}" update="@form" />
 				</p:toolbarGroup>
 				<p:toolbarGroup align="right">
-					<p:button value="Consulta"
-						outcome="/cultivos/PesquisaCultivos" />
+					<p:button value="Consulta" outcome="/cultivos/PesquisaCultivos"/>
+						
 				</p:toolbarGroup>
 			</p:toolbar>
 
@@ -41,10 +43,11 @@
 				<p:inputText id="id" size="20" maxlength="20"
 				value="#{cadastroCultivoBean.cultivo.id}" />
 
-				<p:outputLabel value="Nombre" for="nome" />
+				<p:outputLabel value="Descripción" for="nome" />
 				<p:inputText id="nome" size="60" maxlength="80"
 					value="#{cadastroCultivoBean.cultivo.nome}" />
 
+				
 			</p:panelGrid>
 		</h:form>
 
